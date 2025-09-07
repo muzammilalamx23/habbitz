@@ -1,0 +1,14 @@
+habit_track_work/
+├── backend/
+│   ├── server.js
+│ 
+│   
+├── frontend/
+│   ├── about.html
+│   ├── index.html
+│   └── landing.html
+|   └──	 login.html
+|   └── signup_main.html(signup page)
+|   └── proj.js
+|   └── style.css(main css)
+|   └── success(after successful login)

@@ -1,0 +1,77 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test Page</h1>
+    
+    <div>
+        <h2>Test Signup</h2>
+        <input type="text" id="testName" placeholder="Full Name" value="Test User">
+        <input type="email" id="testEmail" placeholder="Email" value="test@example.com">
+        <input type="password" id="testPassword" placeholder="Password" value="password123">
+        <button onclick="testSignup()">Test Signup</button>
+    </div>
+
+    <div>
+        <h2>Test Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" value="test@example.com">
+        <input type="password" id="loginPassword" placeholder="Password" value="password123">
+        <button onclick="testLogin()">Test Login</button>
+    </div>
+
+    <div>
+        <h2>Test Create Habit</h2>
+        <button onclick="testCreateHabit()">Create Test Habit</button>
+    </div>
+
+    <div>
+        <h2>Results</h2>
+        <div id="results"></div>
+    </div>
+
+    <script src="api.js"></script>
+    <script>
+        function log(message) {
+            document.getElementById('results').innerHTML += '<p>' + JSON.stringify(message) + '</p>';
+        }
+
+        async function testSignup() {
+            try {
+                const result = await signup(
+                    document.getElementById('testName').value,
+                    document.getElementById('testEmail').value,
+                    document.getElementById('testPassword').value
+                );
+                log('Signup success: ' + JSON.stringify(result));
+            } catch (error) {
+                log('Signup error: ' + error.message);
+            }
+        }
+
+        async function testLogin() {
+            try {
+                const result = await login(
+                    document.getElementById('loginEmail').value,
+                    document.getElementById('loginPassword').value
+                );
+                log('Login success: ' + JSON.stringify(result));
+            } catch (error) {
+                log('Login error: ' + error.message);
+            }
+        }
+
+        async function testCreateHabit() {
+            try {
+                const result = await createHabit('Test Habit', '📚', 120);
+                log('Create habit success: ' + JSON.stringify(result));
+            } catch (error) {
+                log('Create habit error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html> -->

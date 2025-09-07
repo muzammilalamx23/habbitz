@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Habbitz</title>
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body,
+      html {
+        height: 100%;
+        font-family: Arial, sans-serif;
+        color: #fff;
+      }
+
+      /* Header with Centered Logo */
+      .signup-header {
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+
+      .signup-logo {
+        height: 60px;
+      }
+
+      /* Hero Section */
+      .signup-hero {
+        height: 80vh;
+        background: url("/frontend/asset/stand_boy.jpg") no-repeat center
+          center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 8%;
+        position: relative;
+      }
+
+      /* Dark overlay */
+      .signup-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      /* Transparent Card */
+      .signup-card {
+        position: relative;
+        max-width: 420px;
+        padding: 30px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1); /* Transparent background */
+        backdrop-filter: blur(10px); /* Glass blur */
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+        z-index: 1;
+        text-align: center;
+      }
+
+      .signup-card h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .signup-card p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      /* Glass Button */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 10px;
+        background: #ff9900;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.05);
+      }
+
+      /* Footer */
+      .site-footer {
+        height: 20vh;
+        background: #111;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .site-footer p {
+        color: #bbb;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header with Centered Logo -->
+    <header class="signup-header">
+      <img
+        src="/frontend/asset/main_logo.png"
+        alt="Habbitz Logo"
+        class="signup-logo"
+      />
+    </header>
+
+    <!-- Hero Section -->
+    <section class="signup-hero">
+      <div class="signup-card">
+        <h1>Build Better Habits</h1>
+        <p>
+          Stay consistent, track your progress, and achieve your goals with
+          Habbitz. Your journey to self-improvement starts here.
+        </p>
+        <a href="signup_main.html" class="btn">Get Started</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p>&copy; 2025 Habbitz. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

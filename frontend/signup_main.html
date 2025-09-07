@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    .signup-card {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    .signup-card h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .signup-card .input-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .signup-card input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    .signup-card .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .signup-card button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff9900;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .signup-card button:hover {
+      background-color: lightsalmon;
+    }
+
+    .signup-card p {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .right {
+      flex: 1;
+      background-image: url('/frontend/asset/signup_1.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #222;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+      }
+      .right, .left {
+        flex: none;
+        height: 300px;
+      }
+      .signup-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <div class="left">
+        <div class="signup-card">
+          <h2>Sign Up</h2>
+          <input type="text" placeholder="Full Name" id="fullname" required>
+          <input type="email" placeholder="Email" id="email" required>
+          <div class="input-group">
+            <input type="password" placeholder="Password" id="password" required>
+            <span class="toggle-password" onclick="togglePassword('password')">&#128065;</span>
+          </div>
+          <div class="input-group">
+            <input type="password" placeholder="Confirm Password" id="confirm-password" required>
+            <span class="toggle-password" onclick="togglePassword('confirm-password')">&#128065;</span>
+          </div>
+          <button id="signup-btn">Sign Up</button>
+          <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+      </div>
+      <div class="right"></div>
+    </div>
+
+    <footer>
+      &copy;2025 Habbitz. All Rights Reserved.
+    </footer>
+  </div>
+<script src="api.js"></script>
+<script>
+document.getElementById('signup-btn').addEventListener('click', async () => {
+  const fullname = document.getElementById('fullname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+  
+  if (!fullname || !email || !password) {
+    alert('All fields are required');
+    return;
+  }
+  
+  if (password !== confirmPassword) {
+    alert('Passwords do not match');
+    return;
+  }
+  
+  try {
+    const data = await signup(fullname, email, password);
+    localStorage.setItem('user', JSON.stringify(data.user));
+    alert('Signup successful ✅');
+    window.location.href = 'success.html';
+  } catch (error) {
+    alert('Signup failed: ' + error.message);
+  }
+});
+
+function togglePassword(fieldId) {
+  const field = document.getElementById(fieldId);
+  const toggleBtn = field.nextElementSibling;
+  
+  if (field.type === "password") {
+    field.type = "text";
+    toggleBtn.textContent = "🙈";
+  } else {
+    field.type = "password";
+    toggleBtn.textContent = "👁";
+  }
+}
+</script>
+</body>
+</html>

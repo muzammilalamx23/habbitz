@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body,
+      html {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f4f4f4;
+      }
+
+      .login-container {
+        background-color: white;
+        padding: 40px 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 350px;
+      }
+
+      .login-container img {
+        width: 100px;
+        margin-bottom: 20px;
+      }
+
+      .login-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .login-container input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .login-container button {
+        width: 100%;
+        padding: 12px;
+        background-color: #ff9900;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .login-container button:hover {
+        background-color: lightsalmon;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 16px;
+        color: #555;
+      }
+
+      .input-group {
+        position: relative;
+      }
+
+      .login-container p {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <img src="/frontend/asset/main_logo.png" alt="Logo" />
+      <h2>Login</h2>
+      <input type="email" placeholder="Email" id="email" required />
+      <div class="input-group">
+        <input type="password" placeholder="Password" id="password" required />
+        <span class="toggle-password" onclick="togglePassword('password')"
+          >&#128065;</span
+        >
+      </div>
+      <button id="login-btn">Login</button>
+      <p>Don't have an account? <a href="signup_main.html">Sign Up</a></p>
+    </div>
+    <script src="api.js"></script>
+    <script>
+      document.getElementById("login-btn").addEventListener("click", async () => {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        if (!email || !password) {
+          alert("Please fill in all fields");
+          return;
+        }
+
+        try {
+          const data = await login(email, password);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          alert("Login successful ✅");
+          window.location.href = "success.html";
+        } catch (error) {
+          alert("Login failed: " + error.message);
+        }
+      });
+
+      function togglePassword(fieldId) {
+        const field = document.getElementById(fieldId);
+        const toggleBtn = field.nextElementSibling;
+
+        if (field.type === "password") {
+          field.type = "text";
+          toggleBtn.textContent = "🙈";
+        } else {
+          field.type = "password";
+          toggleBtn.textContent = "👁";
+        }
+      }
+    </script>
+  </body>
+</html>
